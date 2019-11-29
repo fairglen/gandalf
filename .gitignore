@@ -1,0 +1,6 @@
+.pioenvs
+.piolibdeps
+.DS_Store
+.vscode
+.pio
+.pytest_cache
