@@ -46,7 +46,7 @@
 
 #define GPIO_GATE_PIN GPIO_NUM_12
 
-IPAddress local(192, 168, 101, 111);
+IPAddress local(192, 168, 101, 128);
 IPAddress gateway(192, 168, 101, 1);
 IPAddress subnet(255, 255, 0, 0);
 
@@ -117,9 +117,9 @@ void setupCamera()
     config.xclk_freq_hz = 20000000;
     config.pixel_format = PIXFORMAT_JPEG;
 
-    config.frame_size = FRAMESIZE_SVGA;
-    config.jpeg_quality = 6;
-    config.fb_count = 1;
+    config.frame_size = FRAMESIZE_VGA;
+    config.jpeg_quality = 33;
+    config.fb_count = 2;
 
     // Camera init
     esp_err_t err = esp_camera_init(&config);
@@ -175,17 +175,12 @@ void capturePhoto()
 
 void toggleGate()
 {
-    Serial.print("1GateState is : ");
-    Serial.println(gateState);
     digitalWrite(GPIO_GATE_PIN, !digitalRead(GPIO_GATE_PIN));
     gateState = digitalRead(GPIO_GATE_PIN);
-    Serial.print("2GateState is : ");
-    Serial.println(gateState);
-    delay(1000);
+    delay(700);
     digitalWrite(GPIO_GATE_PIN, !digitalRead(GPIO_GATE_PIN));
     gateState = digitalRead(GPIO_GATE_PIN);
-    Serial.print("3GateState is : ");
-    Serial.println(gateState);
+    Serial.print("Gate was toggled!");
 }
 
 void setupWebServer()

@@ -4,3 +4,4 @@
 .vscode
 .pio
 .pytest_cache
+*__pycache__

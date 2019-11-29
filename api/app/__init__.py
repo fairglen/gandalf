@@ -1,4 +1,3 @@
-from flask import Flask
+from flask import Blueprint
 
-def create_api():
-    return Flask(__name__)
+api = Blueprint('api', __name__)
