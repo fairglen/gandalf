@@ -1,0 +1,2 @@
+def capture():
+    return "poop"
